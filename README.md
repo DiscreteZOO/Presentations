@@ -1,2 +1,3 @@
-# DiscreteZOO-presentations
+# DiscreteZOO presentations
+
 Presentations on DiscreteZOO
