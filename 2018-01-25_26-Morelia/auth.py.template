@@ -1,0 +1,4 @@
+host = 'baza.fmf.uni-lj.si'
+database = 'discretezoo'
+user = 'user'
+password = 'password'
