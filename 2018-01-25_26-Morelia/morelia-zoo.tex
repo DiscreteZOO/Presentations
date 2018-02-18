@@ -1,18 +1,30 @@
 \documentclass[usepdftitle=false]{beamer}
-\usepackage[slovene,english]{babel}
-\selectlanguage{english}
 
 \setbeamertemplate{navigation symbols}{}
 \usepackage{beamerthemedefault}
 \beamertemplatefootempty
+
 \usepackage[utf8]{inputenc}
-\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{mathdots}
+
 \usepackage{color}
 \usepackage{enumerate}
 \usepackage{graphicx,epsfig}
 \usepackage{tikz,pgflibraryshapes}
+
+\usepackage[slovene,english]{babel}
+\selectlanguage{english}
+
+%% Ensure copy-pasteable č in the resulting pdf
+%% See https://tex.stackexchange.com/a/239177/
+%
+\input glyphtounicode
+\pdfgentounicode=1
 
 \usetikzlibrary{calc}
 \usetikzlibrary{backgrounds}
@@ -34,8 +46,9 @@
 
 \title[DiscreteZOO]{\includegraphics[height=2cm]{discretezoo.png}}
 \subtitle{A repository of graphs and other discrete objects}
-\author{Janoš Vidali \\
-{\scriptsize Joint work with Katja Berčič}
+\author{%
+  Janoš Vidali \\
+  {\scriptsize Joint work with Katja Berčič}
 }
 \date{January 25--26, 2018}
 
