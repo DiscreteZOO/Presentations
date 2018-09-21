@@ -17,5 +17,5 @@ RUN    apt-get update -qq \
 USER sage
 RUN git clone --recursive https://github.com/DiscreteZOO/DiscreteZOO-sage.git ${HOME}/DiscreteZOO-sage
 RUN mkdir ${HOME}/.discretezoo
-RUN wget http://discretezoo.xyz/discretezoo.db -o ${HOME}/.discretezoo/discretezoo.db
+RUN wget http://discretezoo.xyz/discretezoo.db -O ${HOME}/.discretezoo/discretezoo.db
 RUN ln -s ${HOME}/DiscreteZOO-sage/discretezoo ${HOME}/sage/local/lib/python2.7/site-packages/discretezoo
