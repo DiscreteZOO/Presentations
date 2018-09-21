@@ -7,3 +7,11 @@ FROM sagemath/sagemath@sha256:e933509b105f36b9b7de892af847ade7753e058c5d9e0c0f28
 
 # Copy the contents of the repo in ${HOME}
 COPY --chown=sage:sage . ${HOME}
+
+RUN git clone --recursive https://github.com/DiscreteZOO/DiscreteZOO-sage.git ${HOME}/DiscreteZOO-sage
+
+RUN mkdir ${HOME}/.discretezoo
+
+RUN wget http://discretezoo.xyz/discretezoo.db -o ${HOME}/.discretezoo/discretezoo.db
+
+RUN ln -s ${HOME}/DiscreteZOO-sage/discretezoo ${HOME}/discretezoo
