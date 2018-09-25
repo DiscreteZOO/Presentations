@@ -19,3 +19,10 @@ by Royle, Conder, and Potočnik, Spiga & Verret.
 We will perform some example searches on the website,
 download a subset of the database
 and showcase some queries that can be run locally with the Sage package.
+
+## Contents
+
+* [Presentation](koper-zoo.pdf) with [LaTeX source](koper-zoo.tex)
+* [Demonstration notebook](DiscreteZOO-demo.ipynb)
+[![Launch in Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/DiscreteZOO/DiscreteZOO-presentations/master?filepath=2018-09-28-Koper/DiscreteZOO-demo.ipynb)
+* [Sample login data](auth.py.template) for a database connection

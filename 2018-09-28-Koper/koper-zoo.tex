@@ -1,0 +1,257 @@
+\documentclass[usepdftitle=false]{beamer}
+
+\setbeamertemplate{navigation symbols}{}
+\usepackage{beamerthemedefault}
+\beamertemplatefootempty
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathdots}
+
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{graphicx,epsfig}
+\usepackage{tikz,pgflibraryshapes}
+
+\usepackage[slovene,english]{babel}
+\selectlanguage{english}
+
+%% Ensure copy-pasteable č in the resulting pdf
+%% See https://tex.stackexchange.com/a/239177/
+%
+\input glyphtounicode
+\pdfgentounicode=1
+
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+
+\hypersetup{pdftitle={DiscreteZOO}}
+
+% za generiranje slik, da se potem hitreje prevaja, pozeni
+% pdflatex --jobname=imeSlike morelia-zoo.tex
+% kjer je imeSlike doloceno z ukazom \beginpgfgraphicnamed (pgfmanual p. 500)
+\pgfrealjobname{koper-zoo}
+
+\definecolor{zooteal}{rgb}{0.01,0.44,0.5}
+\definecolor{zoogray}{gray}{0.97}
+\definecolor{zoored}{rgb}{0.94,0.43,0.29}
+\setbeamercolor*{title}{fg=zooteal}
+\setbeamercolor*{subtitle}{fg=zooteal}
+\setbeamercolor*{palette primary}{fg=zoored,bg=zoogray}
+\setbeamercolor*{structure}{fg=zooteal,bg=zoogray}
+
+\title[DiscreteZOO]{\includegraphics[height=2cm]{discretezoo.png}}
+\subtitle{A repository of graphs and other discrete objects}
+\author{%
+  Janoš Vidali \\
+  {\scriptsize Joint work with Katja Berčič}
+}
+\date{September 28, 2018}
+
+\newcommand{\set}[2]{\ensuremath{\left\{ #1 \; \middle| \; #2 \right\}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\M}{\ensuremath{\mathcal{M}}}
+\newcommand{\e}{\ensuremath{{\textbf e}}}
+\newcommand{\PG}{\ensuremath{\operatorname{PG}}}
+\newcommand{\GQ}{\ensuremath{\operatorname{GQ}}}
+\newcommand{\Alt}{\ensuremath{\operatorname{Alt}}}
+\newcommand{\Her}{\ensuremath{\operatorname{Her}}}
+\newcommand{\rank}{\ensuremath{\operatorname{rank}}}
+\newcommand{\dbab}{\ensuremath{(d, b, \alpha, \beta)}}
+\newcommand{\pp}{\ensuremath{\!+\!}}
+\newcommand{\mm}{\ensuremath{\!-\!}}
+
+\newcommand{\Wlog}{WLOG }
+\newcommand{\theor}{{\bf Theorem}: }
+\newcommand{\lem}{{\bf Lemma}: }
+\newcommand{\prop}{{\bf Proposition}: }
+\newcommand{\conj}{{\bf Conjecture}: }
+\newcommand{\prob}{{\bf Problem}: }
+
+\newcommand{\m}{\ensuremath{\!-\!}}
+\newcommand{\p}{\ensuremath{\!+\!}}
+
+\newcommand{\sV}[2]{{
+       \setlength{\arraycolsep}{2pt}
+       \renewcommand{\arraystretch}{0.6}
+       \left[\begin{array}{ccc} #1 \\ #2 \end{array}\right]
+}}
+
+\newcommand{\sVa}[2]{{
+       \setlength{\arraycolsep}{2pt}
+       \renewcommand{\arraystretch}{0.6}
+       \left[\begin{array}{ccc} #2 \end{array}\right]
+}}
+% odkomentiraj za velike simbole v tabelah
+%\renewcommand{\sVa}[2]{\sV{#1}{#2}}
+
+\newcommand{\sS}[2]{{
+	\setlength{\arraycolsep}{2pt}
+	\renewcommand{\arraystretch}{0.6}
+	\left\{\begin{array}{ccc} #1 \\ #2 \end{array}\right\}
+}}
+
+\definecolor{darkgreen}{rgb}{0.0,0.5,0.0}
+
+\newcommand{\res}[1]{\textcolor{darkgreen}{#1}}
+\newcommand{\defn}[1]{\textcolor{zoored}{\emph{#1}}}
+\newcommand{\keyw}[1]{\textcolor{zooteal}{#1}}
+\newcommand{\con}[1]{\textcolor{zoored}{#1}}
+
+\begin{document}
+
+{
+\section{Introduction}
+\frame[plain]{
+\titlepage
+}
+}
+
+\frame
+{
+    \frametitle{Idea}
+
+    \begin{itemize}
+    \itemsep=5mm
+    \item There are various \keyw{censuses} of graphs and \\
+    other discrete objects in the literature and the internet.
+    \item We want these objects to be \keyw{easily accessible}.
+    \item Furthermore, we want to have \keyw{precomputed properties} \\
+    that can be used for \keyw{searching}.
+    \end{itemize}
+}
+
+\frame
+{
+    \frametitle{DiscreteZOO}
+
+    \begin{itemize}
+    \itemsep=5mm
+    \item We gather the censuses into a \keyw{database}.
+    \item The data can be accessed via the website
+    \begin{center}
+    \vskip 0.2cm
+    \Large \con{\href{http://discretezoo.xyz}{discretezoo.xyz}}
+    \end{center}
+    \item A \keyw{Sage} package is also available at
+    \begin{center}
+    \vskip 0.2cm
+    \Large \con{\href{https://github.com/DiscreteZOO}{github.com/DiscreteZOO}}
+    \end{center}
+    \end{itemize}
+}
+
+\frame
+{
+    \frametitle{Where we are now}
+
+    \begin{itemize}
+    \itemsep=5mm
+    \item \con{Censuses}
+        \begin{itemize}
+        \itemsep=3mm
+        \item All connected \keyw{cubic vertex-transitive} graphs with \\
+        at most \defn{$1280$} vertices (by P.~Potočnik, P.~Spiga and G.~Verret),
+        \item all connected \keyw{cubic arc-transitive} graphs with at most
+        \defn{$2048$} vertices (from the extended Foster census by M.~Conder),
+        and
+        \item all \keyw{vertex-transitive graphs} with at most \defn{$31$}
+        vertices \\ (by G.~Royle).
+        \end{itemize}
+    \item \con{Computed properties}
+        \begin{itemize}
+        \itemsep=3mm
+        \item Basic graph properties (\keyw{order}, \keyw{degree},
+        \keyw{diameter}, \keyw{girth}, \dots),
+        \item automorphism group related properties \\
+        (\keyw{vertex-}, \keyw{edge-}, \keyw{arc-},
+        \keyw{distance-transitivity}),
+        \item some other properties \\
+        (\keyw{is Hamiltonian}, \keyw{is Cayley}, \keyw{is partial cube},
+        \dots).
+        \end{itemize}
+    \end{itemize}
+}
+
+\frame
+{
+    \frametitle{Where we are not quite yet}
+    (but we are working on it!)
+    \vskip 1cm
+
+    \begin{itemize}
+    \itemsep=5mm
+    \item More graphs
+    \item More precomputed properties
+    \item Nice \keyw{images} of graphs
+    \item Other combinatorial objects
+        \begin{itemize}
+        \itemsep=3mm
+        \item \keyw{Finite groups}, \keyw{polytopes}, \keyw{maniplexes}, \\
+        \keyw{geometries}, \keyw{automata}, \keyw{lattices}, \dots
+        \item Feasible \keyw{parameter sets} for objects \\
+        (e.g.~distance-regular graphs)
+        \end{itemize}
+    \item \con{Your wishes?}
+    \end{itemize}
+    \vskip 1cm
+}
+
+\frame
+{
+    \frametitle{Applications}
+
+    The data from \con{DiscreteZOO} \\
+    has been used in the following research.
+
+    \medskip
+
+    \begin{thebibliography}{2}
+    \bibitem{m17} T.~Marc.
+    \newblock Classification of vertex-transitive cubic partial cubes.
+    \newblock {\em J. Graph Theory}, 86(4):406--421, 2017.
+
+    \bibitem{pv5} P.~Potočnik and J.~Vidali.
+    \newblock Cubic girth-regular graphs of small girth.
+    \newblock Submitted to {\em Ars Math. Contemp.}
+
+    \bibitem{pv6} P.~Potočnik and J.~Vidali.
+    \newblock Cubic vertex-transitive graphs of girth six.
+    \newblock To be submitted.
+    \end{thebibliography}
+
+}
+
+\frame
+{
+\begin{center}
+\huge
+\con{Demo} \\
+
+\bigskip
+\bigskip
+
+{\large
+Notebook available at \\
+\con{\href{https://github.com/DiscreteZOO/DiscreteZOO-presentations}{github.com/DiscreteZOO/DiscreteZOO-presentations}}
+}
+\end{center}
+}
+
+
+\frame
+{
+\begin{center}
+\huge
+\con{Questions, ideas?}
+\end{center}
+}
+
+\end{document}
