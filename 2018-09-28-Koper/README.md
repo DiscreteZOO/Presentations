@@ -1,8 +1,7 @@
 # *DiscreteZOO* - a repository of combinatorial objects and its companion Sage package
 
 This talk will be held on the Software Tools For Mathematics workshop
-in Koper, Slovenia, on September 27 and/or 28, 2018
-(the precise date is still to be determined).
+in Koper, Slovenia, on September 28, 2018.
 
 ## Abstract
 
